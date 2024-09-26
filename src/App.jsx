@@ -3,7 +3,7 @@ import data from "./data";
 import List from "./list";
 
 const App = () => {
-  const [reminders, setReminders] = useState(data);
+  const [reminders, setReminders] = useState(data || []);
   const numberOfReminders = reminders.length;
 
   const clearReminders = () => {
@@ -11,12 +11,12 @@ const App = () => {
   };
 
   const resetReminders = () => {
-    setReminders(data);
+    setReminders([...data]);
   };
 
   return (
     <main>
-      <div className="container">
+      <section className="container">
         <h3>{numberOfReminders} birthdays today</h3>
         <List people={reminders}></List>
         <div
@@ -32,7 +32,7 @@ const App = () => {
             Reset Reminders
           </button>
         </div>
-      </div>
+      </section>
     </main>
   );
 };
